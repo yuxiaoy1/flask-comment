@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flask-Comment Example</title>
+    <style>
+        h1, ul {
+            text-align: center
+        }
+        ul {
+            padding: 0;
+        }
+        ul > li {
+            list-style-type: none;
+            display: inline;
+        }
+        ul > li > a {
+            color: gray;
+        }
+        .selected {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+<h1>Flask-Comment Example</h1>
+<ul>
+    <li><a {% if 'disqus' in request.base_url or request.base_url == request.host_url %}class='selected'{% endif %} href="/disqus">Disqus</a></li>
+    <li><a {% if 'cusdis' in request.base_url %}class='selected'{% endif %} href="/cusdis">Cusdis</a></li>
+    <li><a {% if 'valine' in request.base_url %}class='selected'{% endif %} href="/valine">Valine</a></li>
+    <li><a {% if 'utterances' in request.base_url %}class='selected'{% endif %} href="/utterances">Utterances</a></li>
+    <li><a {% if 'gitalk' in request.base_url %}class='selected'{% endif %} href="/gitalk">Gitalk</a></li>
+</ul>
+{{ comment.load() }}
+</body>
+
+</html>
