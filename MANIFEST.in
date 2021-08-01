@@ -3,4 +3,4 @@ graft examples
 graft tests
 include LICENSE
 include README.md
-include CHANGES.rst
+include CHANGES.md

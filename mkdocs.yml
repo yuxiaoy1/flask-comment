@@ -49,5 +49,8 @@ plugins:
         python:
           rendering:
             heading_level: 2
+          setup_commands:
+            - import sys
+            - sys.path.append("src")
       watch:
         - src/flask_comment

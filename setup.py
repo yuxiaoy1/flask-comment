@@ -11,7 +11,7 @@ from setuptools import setup
 
 setup(
     name='Flask-Comment',
-    install_requires=['Flask'],
+    install_requires=['flask'],
     extras_require={
         'dev': [
             'coverage',

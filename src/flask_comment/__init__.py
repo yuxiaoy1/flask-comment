@@ -22,7 +22,7 @@ try:
 except AssertionError:  # pragma: no cover
     raise RuntimeError('Flask-Comment required Python 3.6+!')
 
-__version__ = '1.0.0'
+__version__ = '0.1.0'
 
 DISQUS = 'disqus'
 CUSDIS = 'cusdis'
@@ -60,25 +60,25 @@ class Comment:
         self,
         page_url: t.Optional[str] = None,
         page_indentifier: t.Optional[str] = None,
-    ) -> Markup:
+    ) -> t.Optional[Markup]:
         """
         Load comment component resources.
 
         Examples:
-        
+
         ```py
         from flask import Flask
         from flask_comment import Comment
-        
+
         app = Flask(__name__)
         comment = Comment(app)
         ```
-        
+
         Arguments:
-            page_url: The [page url](https://help.disqus.com/en/articles/1717084-javascript-configuration-variables) for Disqus, 
+            page_url: The [page url](https://help.disqus.com/en/articles/1717084-javascript-configuration-variables) for Disqus, # noqa: B950
                 default to [`flask.request.base_url`](https://flask.palletsprojects.com/en/latest/api/?highlight=base_url#flask.Request.base_url).
-            
-            page_indentifier: The [page indentifier](https://help.disqus.com/en/articles/1717084-javascript-configuration-variables) for Disqus, 
+
+            page_indentifier: The [page indentifier](https://help.disqus.com/en/articles/1717084-javascript-configuration-variables) for Disqus, # noqa: B950
                 default to [`flask.request.path`](https://flask.palletsprojects.com/en/latest/api/?highlight=request%20path#flask.Request.path).
         """
         if current_app.config['COMMENT_PLATFORM'] == DISQUS:
@@ -89,8 +89,9 @@ class Comment:
             return self._load_valine()
         if current_app.config['COMMENT_PLATFORM'] == UTTERANCES:
             return self._load_utterances()
-        if current_app.config['COMMENT_PLATFORM'] == GITALK:  # pragma: no cover
+        if current_app.config['COMMENT_PLATFORM'] == GITALK:
             return self._load_gitalk()
+        return None  # pragma: no cover
 
     @staticmethod
     def _load_disqus(
