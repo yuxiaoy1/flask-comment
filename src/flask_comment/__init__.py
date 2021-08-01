@@ -22,7 +22,7 @@ try:
 except AssertionError:  # pragma: no cover
     raise RuntimeError('Flask-Comment required Python 3.6+!')
 
-__version__ = '1.0.0'
+__version__ = '0.1.0'
 
 DISQUS = 'disqus'
 CUSDIS = 'cusdis'
