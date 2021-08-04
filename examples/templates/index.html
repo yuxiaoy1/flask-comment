@@ -21,6 +21,11 @@
         .selected {
             color: green;
         }
+        .comment {
+            max-width: 50rem;
+            margin: auto;
+            padding: 0 1.5rem;
+        }
     </style>
 </head>
 
@@ -33,7 +38,9 @@
     <li><a {% if 'utterances' in request.base_url %}class='selected'{% endif %} href="/utterances">Utterances</a></li>
     <li><a {% if 'gitalk' in request.base_url %}class='selected'{% endif %} href="/gitalk">Gitalk</a></li>
 </ul>
-{{ comment.load() }}
+<div class="comment">
+    {{ comment.load() }}
+</div>
 </body>
 
 </html>
